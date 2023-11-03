@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ServiciosResource\Pages;
 use App\Filament\Resources\ServiciosResource\RelationManagers;
 use App\Models\Service;
-use App\Models\Servicios;
+use App\Models\Servicio;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ServiciosResource extends Resource
 {
-    protected static ?string $model = Service::class;
+    protected static ?string $model = Servicio::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

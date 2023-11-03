@@ -4,8 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
-use App\Models\Product;
+use App\Models\Producto;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Form;
 use Filament\Forms\FormsComponent;
 use Filament\Resources\Resource;
@@ -16,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProductResource extends Resource
 {
-    protected static ?string $model = Product::class;
+    protected static ?string $model = Producto::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -24,9 +25,16 @@ class ProductResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nombre'),
+                Forms\Components\TextInput::make('nombre')->required(),
                 Forms\Components\TextInput::make('descripcion'),
                 Forms\Components\TextInput::make('precio'),
+                Forms\Components\Select::make('categoria_id')->relationship('categoria','nombre'),
+                FileUpload::make('imagen')
+                ->disk('public')
+                ->directory('form-attachments')
+                ->visibility('private')
+             
+               
             ]);
     }
 
@@ -37,6 +45,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('nombre'),
                 Tables\Columns\TextColumn::make('descripcion'),
                 Tables\Columns\TextColumn::make('precio'),
+                Tables\Columns\TextColumn::make('categoria.nombre'),
             ])
             ->filters([
                 //

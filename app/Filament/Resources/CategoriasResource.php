@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategoriasResource\Pages;
 use App\Filament\Resources\CategoriasResource\RelationManagers;
 use App\Models\Categorias;
-use App\Models\Category;
+use App\Models\Categoria;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoriasResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Categoria::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
